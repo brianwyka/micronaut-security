@@ -28,7 +28,7 @@ import java.util.Map;
  * @author James Kleeh
  * @since 1.0
  */
-public interface SecurityRule extends Ordered {
+public interface SecurityRule<T> extends Ordered {
 
     /**
      * The token to represent allowing anonymous access.
@@ -49,10 +49,9 @@ public interface SecurityRule extends Ordered {
      * Returns a security result based on any conditions.
      * @see SecurityRuleResult
      *
-     * @param request The current request
-     * @param routeMatch The matched route or empty if no route was matched. e.g. static resource.
+     * @param subject the subject of the security check
      * @param claims The claims from the token. Null if not authenticated
      * @return The result
      */
-    SecurityRuleResult check(HttpRequest<?> request, @Nullable RouteMatch<?> routeMatch, @Nullable  Map<String, Object> claims);
+    SecurityRuleResult check(T subject, @Nullable  Map<String, Object> claims);
 }

@@ -25,7 +25,7 @@ class SecuritySessionBeansWithSecuritySessionDisabledSpec extends ApplicationCon
         where:
         clazz << [
                 SecuritySessionConfigurationProperties,
-                SessionAuthenticationFetcher,
+                HttpSessionAuthenticationFetcher,
                 SessionLoginHandler,
                 SessionLogoutHandler
         ]

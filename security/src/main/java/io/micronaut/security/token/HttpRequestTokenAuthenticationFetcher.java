@@ -20,6 +20,7 @@ import io.micronaut.http.HttpRequest;
 import io.micronaut.security.authentication.Authentication;
 import io.micronaut.security.event.TokenValidatedEvent;
 import io.micronaut.security.filters.AuthenticationFetcher;
+import io.micronaut.security.filters.HttpRequestAuthenticationFetcher;
 import io.micronaut.security.token.reader.TokenResolver;
 import io.micronaut.security.token.validator.TokenValidator;
 import io.reactivex.Flowable;
@@ -41,7 +42,7 @@ import static io.micronaut.security.filters.SecurityFilter.TOKEN;
  * @since 1.0
  */
 @Singleton
-public class TokenAuthenticationFetcher implements AuthenticationFetcher {
+public class HttpRequestTokenAuthenticationFetcher implements HttpRequestAuthenticationFetcher {
 
     /**
      * The order of the fetcher.
@@ -58,9 +59,9 @@ public class TokenAuthenticationFetcher implements AuthenticationFetcher {
      * @param eventPublisher  The Application event publisher
      */
     @Inject
-    public TokenAuthenticationFetcher(Collection<TokenValidator> tokenValidators,
-                                      TokenResolver tokenResolver,
-                                      ApplicationEventPublisher eventPublisher) {
+    public HttpRequestTokenAuthenticationFetcher(Collection<TokenValidator> tokenValidators,
+                                                 TokenResolver tokenResolver,
+                                                 ApplicationEventPublisher eventPublisher) {
         this.eventPublisher = eventPublisher;
         this.tokenResolver = tokenResolver;
         this.tokenValidators = tokenValidators;

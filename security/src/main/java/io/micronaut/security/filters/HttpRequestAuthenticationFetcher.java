@@ -15,24 +15,14 @@
  */
 package io.micronaut.security.filters;
 
-import io.micronaut.core.order.Ordered;
 import io.micronaut.http.HttpRequest;
-import io.micronaut.security.authentication.Authentication;
-import org.reactivestreams.Publisher;
 
 /**
- * Describes a bean which attempts to read an {@link Authentication} from an arbitrary authentication source
+ * Describes a bean which attempts to read an {@link io.micronaut.security.authentication.Authentication} from {@link HttpRequest}
  *
- * @author Sergio del Amo
- * @since 1.0
+ * @author Brian Wyka
+ * @since 3.0
  */
-public interface AuthenticationFetcher<T> extends Ordered {
+public interface HttpRequestAuthenticationFetcher extends AuthenticationFetcher<HttpRequest<?>> {
 
-    /**
-     * Attempts to read an {@link Authentication} from a {@link HttpRequest} being executed.
-     *
-     * @param authenticationSource the authentication source
-     * @return {@link Authentication} if found
-     */
-    Publisher<Authentication> fetchAuthentication(final T authenticationSource);
 }

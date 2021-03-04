@@ -21,13 +21,12 @@ import io.micronaut.security.rules.ConfigurationInterceptUrlMapRule
 import io.micronaut.security.rules.IpPatternsRule
 import io.micronaut.security.rules.SecuredAnnotationRule
 import io.micronaut.security.rules.SensitiveEndpointRule
-import io.micronaut.security.token.TokenAuthenticationFetcher
+import io.micronaut.security.token.HttpRequestTokenAuthenticationFetcher
 import io.micronaut.security.token.config.TokenConfigurationProperties
 import io.micronaut.security.token.propagation.HttpHeaderTokenPropagator
 import io.micronaut.security.token.propagation.HttpHeaderTokenPropagatorConfiguration
 import io.micronaut.security.token.propagation.TokenPropagationConfigurationProperties
 import io.micronaut.security.token.propagation.TokenPropagationHttpClientFilter
-import io.micronaut.security.token.propagation.TokenPropagator
 import io.micronaut.security.utils.DefaultSecurityService
 import spock.lang.AutoCleanup
 import spock.lang.Shared
@@ -77,7 +76,7 @@ class SecurityDisabledSpec extends Specification {
                 TokenPropagationHttpClientFilter,
                 HttpHeaderTokenPropagator,
                 HttpHeaderTokenPropagatorConfiguration,
-                TokenAuthenticationFetcher,
+                HttpRequestTokenAuthenticationFetcher,
                 DefaultSecurityService,
         ]
 

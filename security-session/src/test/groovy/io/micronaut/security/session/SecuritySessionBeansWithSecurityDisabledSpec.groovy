@@ -23,10 +23,10 @@ class SecuritySessionBeansWithSecurityDisabledSpec extends ApplicationContextSpe
 
         where:
         clazz << [
-            SecuritySessionConfigurationProperties,
-            SessionAuthenticationFetcher,
-            SessionLoginHandler,
-            SessionLogoutHandler
+                SecuritySessionConfigurationProperties,
+                HttpSessionAuthenticationFetcher,
+                SessionLoginHandler,
+                SessionLogoutHandler
         ]
 
         description = clazz.name

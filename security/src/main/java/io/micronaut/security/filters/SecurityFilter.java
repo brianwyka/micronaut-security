@@ -77,7 +77,7 @@ public class SecurityFilter extends OncePerRequestHttpServerFilter {
     private static final Integer ORDER = ServerFilterPhase.SECURITY.order();
 
     protected final Collection<SecurityRule> securityRules;
-    protected final Collection<AuthenticationFetcher> authenticationFetchers;
+    protected final Collection<AuthenticationFetcher<HttpRequest<?>>> authenticationFetchers;
 
     protected final SecurityConfiguration securityConfiguration;
 
@@ -88,7 +88,7 @@ public class SecurityFilter extends OncePerRequestHttpServerFilter {
      */
     @Inject
     public SecurityFilter(Collection<SecurityRule> securityRules,
-                          Collection<AuthenticationFetcher> authenticationFetchers,
+                          Collection<AuthenticationFetcher<HttpRequest<?>>> authenticationFetchers,
                           SecurityConfiguration securityConfiguration) {
         this.securityRules = securityRules;
         this.authenticationFetchers = authenticationFetchers;

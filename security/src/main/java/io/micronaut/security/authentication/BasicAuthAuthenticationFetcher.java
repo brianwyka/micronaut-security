@@ -21,6 +21,7 @@ import io.micronaut.core.async.publisher.Publishers;
 import io.micronaut.core.util.StringUtils;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.security.filters.AuthenticationFetcher;
+import io.micronaut.security.filters.HttpRequestAuthenticationFetcher;
 import io.micronaut.security.token.config.TokenConfiguration;
 import io.reactivex.Flowable;
 import org.reactivestreams.Publisher;
@@ -37,7 +38,7 @@ import java.util.Optional;
  */
 @Requires(property = BasicAuthAuthenticationConfiguration.PREFIX + ".enabled", notEquals = StringUtils.FALSE)
 @Singleton
-public class BasicAuthAuthenticationFetcher implements AuthenticationFetcher {
+public class BasicAuthAuthenticationFetcher implements HttpRequestAuthenticationFetcher {
 
     private static final Logger LOG = LoggerFactory.getLogger(BasicAuthAuthenticationFetcher.class);
     private final Authenticator authenticator;

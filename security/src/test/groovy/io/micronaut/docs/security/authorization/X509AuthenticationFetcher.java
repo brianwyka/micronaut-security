@@ -5,6 +5,7 @@ import io.micronaut.context.annotation.Requires;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.security.authentication.Authentication;
 import io.micronaut.security.filters.AuthenticationFetcher;
+import io.micronaut.security.filters.HttpRequestAuthenticationFetcher;
 import io.reactivex.Maybe;
 import org.reactivestreams.Publisher;
 
@@ -19,7 +20,7 @@ import java.util.Optional;
 @Requires(property = "spec.name", value = "X509AuthorizationSpec")
 //tag::clazz[]
 @Singleton
-public class X509AuthenticationFetcher implements AuthenticationFetcher {
+public class X509AuthenticationFetcher implements HttpRequestAuthenticationFetcher {
 
     @Override
     public Publisher<Authentication> fetchAuthentication(HttpRequest<?> request) {

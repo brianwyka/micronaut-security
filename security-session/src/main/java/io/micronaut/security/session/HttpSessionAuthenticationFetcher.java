@@ -17,9 +17,9 @@ package io.micronaut.security.session;
 
 import io.micronaut.http.HttpRequest;
 import io.micronaut.security.authentication.Authentication;
-import io.micronaut.security.filters.AuthenticationFetcher;
+import io.micronaut.security.filters.HttpRequestAuthenticationFetcher;
 import io.micronaut.security.filters.SecurityFilter;
-import io.micronaut.security.token.TokenAuthenticationFetcher;
+import io.micronaut.security.token.HttpRequestTokenAuthenticationFetcher;
 import io.micronaut.session.Session;
 import io.micronaut.session.http.HttpSessionFilter;
 import io.reactivex.Maybe;
@@ -36,12 +36,12 @@ import java.util.Optional;
  * @since 1.0
  */
 @Singleton
-public class SessionAuthenticationFetcher implements AuthenticationFetcher {
+public class HttpSessionAuthenticationFetcher implements HttpRequestAuthenticationFetcher {
 
     /**
      * The order of the fetcher.
      */
-    public static final Integer ORDER = TokenAuthenticationFetcher.ORDER - 100;
+    public static final Integer ORDER = HttpRequestTokenAuthenticationFetcher.ORDER - 100;
 
     @Override
     public Publisher<Authentication> fetchAuthentication(HttpRequest<?> request) {
